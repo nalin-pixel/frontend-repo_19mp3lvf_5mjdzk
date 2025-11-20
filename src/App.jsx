@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import ProductGrid from './components/ProductGrid'
 import CartDrawer from './components/CartDrawer'
 import CheckoutModal from './components/CheckoutModal'
+import BrandStrip from './components/BrandStrip'
+import Footer from './components/Footer'
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false)
@@ -51,12 +53,13 @@ function App() {
       <Navbar onCartClick={() => setCartOpen(true)} cartCount={count} />
       <main>
         <Hero />
+        <BrandStrip />
         <ProductGrid onAdd={addToCart} />
-        <section id="about" className="bg-black py-20">
+        <section id="about" className="bg-gradient-to-b from-zinc-950 to-black py-20">
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-3xl font-bold">Built for the Night</h2>
-              <p className="text-white/70 mt-3">Every piece is crafted with high-grade LEDs and premium materials to deliver deep blacks and vivid glow that elevates any space or ride.</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Built for the Night</h2>
+              <p className="text-white/70 mt-4 leading-relaxed">Every piece is crafted with high-grade LEDs and premium materials to deliver deep blacks and vivid glow that elevates any space or ride. Designed for longevity, engineered for impact.</p>
               <ul className="mt-6 space-y-2 text-white/80 list-disc list-inside">
                 <li>Adjustable brightness and ambient modes</li>
                 <li>Energy-efficient and cool to the touch</li>
@@ -69,12 +72,18 @@ function App() {
             </div>
           </div>
         </section>
-        <section id="contact" className="bg-gradient-to-b from-black to-zinc-900 py-16">
+        <section id="contact" className="bg-black py-16">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-10">
-              <h3 className="text-2xl font-bold">Have a custom design in mind?</h3>
-              <p className="text-white/70 mt-2">We create bespoke LED posters for clubs, garages and showrooms.</p>
-              <a href="#products" className="inline-block mt-5 px-5 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold transition">Start a Project</a>
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-6 md:p-10">
+              <div className="grid md:grid-cols-2 gap-6 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold">Have a custom design in mind?</h3>
+                  <p className="text-white/70 mt-2">We create bespoke LED posters for clubs, garages and showrooms. Send us your logo, car, or concept.</p>
+                </div>
+                <div className="flex md:justify-end">
+                  <a href="#products" className="inline-block px-5 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold transition">Start a Project</a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -82,6 +91,7 @@ function App() {
 
       <CartDrawer open={cartOpen} items={cart} onClose={() => setCartOpen(false)} onUpdateQty={updateQty} onCheckout={beginCheckout} />
       <CheckoutModal open={checkoutOpen} items={cart} onClose={() => setCheckoutOpen(false)} />
+      <Footer />
     </div>
   )
 }
